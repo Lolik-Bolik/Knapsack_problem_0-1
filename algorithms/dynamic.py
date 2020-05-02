@@ -35,7 +35,7 @@ class DynamicSolver:
                     knapsack_values[i][c] = max(knapsack_values[i - 1][c],
                                                 knapsack_values[i - 1][c - current_weight] + current_value)
         finish_time = time()
-        result.time = round(finish_time - start_time, 2)
+        result.time = round(finish_time - start_time, 4)
         indexes = self.get_knapsack_result_items(knapsack_values)
         result.weight = self.get_result_weight(indexes)
         result.answers = self.get_answers(indexes)

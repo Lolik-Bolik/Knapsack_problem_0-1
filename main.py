@@ -5,6 +5,7 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 import json
+import numpy as np
 
 
 def draw_statistic(statistic, filename):
@@ -25,21 +26,50 @@ def draw_statistic(statistic, filename):
     #plt.show()
 
 
+def genetic_graphic(num_generations, fitness_history, benchmark_number):
+        fitness_history_mean = [np.mean(fitness) for fitness in fitness_history]
+        fitness_history_max = [np.max(fitness) for fitness in fitness_history]
+        plt.plot(list(range(num_generations)), fitness_history_mean, label='Mean Fitness')
+        plt.plot(list(range(num_generations)), fitness_history_max, label='Max Fitness')
+        plt.legend()
+        plt.title('Fitness through the generations')
+        plt.xlabel('Generations')
+        plt.ylabel('Fitness')
+        plt.savefig(f'p_{benchmark_number}_set_genetic.png')
+
+
 def main(args):
     with open(args.path) as f:
         file_content = f.read()
         benchmarks = json.loads(file_content)
+
     for n in range(1, len(benchmarks)):
         capacity = benchmarks[str(n)]["capacity"][0]
-        input_items = [list(a) for a in zip(benchmarks[str(n)]['profits'], benchmarks[str(n)]['weights'])]
-        dynamic_solver = algo.DynamicSolver(input_items, capacity)
-        result = dynamic_solver.solve_knapsack_problem()
-        print('----------\n'
-              f'Time taken: {result.time}\n'
-              f'The answer is : {result.answers}\n'
-              f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n'
-              f'The final weight of knapsack is: {result.weight}\n'
-              f'The final profit of knapsack is: {result.profit}')
+        weights = benchmarks[str(n)]['weights']
+        profits = benchmarks[str(n)]['profits']
+        items = [list(a) for a in zip(benchmarks[str(n)]['profits'], benchmarks[str(n)]['weights'])]
+        genetic_solver = algo.GeneticSolver(profits, weights, capacity, 8)
+
+        genetic_solver.set_initial_population()
+        parameters, fitness_history = genetic_solver.optimize()
+        print('-------------------------------------------------\n')
+        print('The optimized parameters for the given inputs are: \n{}'.format(parameters))
+        print(f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n')
+        item_number = np.arange(1, len(profits) + 1)
+        selected_items = item_number * parameters
+        print('\nSelected items that will maximize the knapsack without breaking it:')
+        for i in range(selected_items.shape[1]):
+            if selected_items[0][i] != 0:
+                print('{}\n'.format(selected_items[0][i]))
+        # genetic_graphic(genetic_solver.num_generations, fitness_history, n)
+        # dynamic_solver = algo.DynamicSolver(input_items, capacity)
+        # result = dynamic_solver.solve_knapsack_problem()
+        # print('----------\n'
+        #       f'Time taken: {result.time}\n'
+        #       f'The answer is : {result.answers}\n'
+        #       f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n'
+        #       f'The final weight of knapsack is: {result.weight}\n'
+        #       f'The final profit of knapsack is: {result.profit}')
 
     # if args.make_csv:
     #     with open('statistic.csv', 'w') as file:
