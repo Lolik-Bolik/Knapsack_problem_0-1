@@ -1,13 +1,13 @@
-File name,Method name,Work time,Result Profit,Result Weight,Capacity,Match
-1.txt,DynamicSolver,0.0003,309,165,165,True
-1.txt,GeneticSolver,0.0183,149,54,165,True
-2.txt,DynamicSolver,0.0,51,26,26,True
-2.txt,GeneticSolver,0.0039,37,19,26,False
-3.txt,DynamicSolver,0.0002,150,190,190,True
-3.txt,GeneticSolver,0.0056,100,115,190,True
-4.txt,DynamicSolver,0.0001,107,50,50,True
-4.txt,GeneticSolver,0.0079,90,41,50,True
-5.txt,DynamicSolver,0.0002,900,104,104,True
-5.txt,GeneticSolver,0.0107,750,60,104,True
-6.txt,DynamicSolver,0.0002,1735,169,170,True
-6.txt,GeneticSolver,0.0078,967,91,170,True
+File name,Method name,Work time,Result Profit,Result Weight,Capacity,Answer,Actual Answer,Match
+1.txt,DynamicSolver,0.0003,309,165,165,[1 1 1 1 0 1 0 0 0 0],[1 1 1 1 0 1 0 0 0 0],True
+1.txt,GeneticSolver,0.0187,149,54,165,[1 1 0 1 0 0 1 0 0 0],[1 1 1 1 0 1 0 0 0 0],False
+2.txt,DynamicSolver,0.0,51,26,26,[0 1 1 1 0],[0 1 1 1 0],True
+2.txt,GeneticSolver,0.0041,37,19,26,[0 1 1 1 0],[0 1 1 1 0],True
+3.txt,DynamicSolver,0.0002,150,190,190,[1 1 0 0 1 0],[1 1 0 0 1 0],True
+3.txt,GeneticSolver,0.0058,100,115,190,[1 1 0 0 1 0],[1 1 0 0 1 0],True
+4.txt,DynamicSolver,0.0001,107,50,50,[1 0 0 1 0 0 0],[1 0 0 1 0 0 0],True
+4.txt,GeneticSolver,0.0083,90,41,50,[1 1 0 0 1 1 0],[1 0 0 1 0 0 0],False
+5.txt,DynamicSolver,0.0002,900,104,104,[1 0 1 1 1 0 1 1],[1 0 1 1 1 0 1 1],True
+5.txt,GeneticSolver,0.0116,750,60,104,[1 0 1 1 1 0 1 1],[1 0 1 1 1 0 1 1],True
+6.txt,DynamicSolver,0.0002,1735,169,170,[0 1 0 1 0 0 1],[0 1 0 1 0 0 1],True
+6.txt,GeneticSolver,0.008,967,91,170,[0 1 0 1 0 0 1],[0 1 0 1 0 0 1],True

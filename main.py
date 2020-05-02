@@ -33,7 +33,7 @@ def main(args):
     if args.make_csv:
         with open('statistic.csv', 'w') as file:
             columns_names = ['File name', 'Method name', 'Work time', 'Result Profit',
-                            'Result Weight','Capacity', 'Match']
+                            'Result Weight','Capacity', 'Answer', 'Actual Answer','Match']
             writer = csv.DictWriter(file, fieldnames=columns_names)
             writer.writeheader()
 
@@ -46,12 +46,14 @@ def main(args):
                     # print(name)
                     result = algorithm.solve()
                     print(name, result.answers)
-                    actual_answer = benchmarks[str(n)]["optimal"]
-                    match = True if (np.asarray(actual_answer) == np.asarray(result.answers)).all() else False
+                    actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
+                    match = True if (actual_answer == np.asarray(result.answers)).all() else False
                     writer.writerow(
                         {'File name': f'{n}.txt', 'Method name': name,
                          'Work time': result.time, 'Result Profit': result.profit, 'Result Weight': result.weight,
                          'Capacity': capacity,
+                         'Answer': np.asarray(result.answers),
+                         'Actual Answer': actual_answer,
                          'Match': match})
                                                  # 'Operations_amount': results.n_operations, 'File_length': len(text)})
                 # genetic_solver = algo.GeneticSolver(profits, weights, capacity)
