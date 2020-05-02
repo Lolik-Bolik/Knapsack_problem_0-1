@@ -10,7 +10,7 @@ class GreedySearch:
         self.profits = profits
         self.length = len(self.profits)
 
-    def solve_knapsack_problem(self):
+    def solve(self):
         result = Results()
         result.time = time()
         result.answers = [0] * self.length

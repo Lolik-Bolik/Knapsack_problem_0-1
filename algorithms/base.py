@@ -7,3 +7,4 @@ class Results:
     time: float = .0
     weight = 0
     profit = 0
+    counter = 0

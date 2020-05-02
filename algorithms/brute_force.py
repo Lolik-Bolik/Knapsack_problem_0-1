@@ -11,13 +11,14 @@ class ExhaustiveSearch:
         self.profits = profits
         self.length = len(self.profits)
 
-    def solve_knapsack_problem(self):
+    def solve(self):
         result = Results()
         result.time = time()
         # Create all possible variants of knapsack
         nodes = list(itertools.product([0, 1], repeat=self.length))
 
         for node in nodes:
+            result.counter += 1
             weight = sum(itertools.compress(self.weights, node))
             profit = sum(itertools.compress(self.profits, node))
             if weight <= self.capacity and result.profit < profit:

@@ -33,7 +33,7 @@ def main(args):
     if args.make_csv:
         with open('statistic.csv', 'w') as file:
             columns_names = ['File name', 'Method name', 'Work time', 'Result Profit',
-                            'Result Weight','Capacity', 'Answer', 'Actual Answer','Match']
+                            'Result Weight','Capacity', 'Answer', 'Actual Answer','Match', 'Counter']
             writer = csv.DictWriter(file, fieldnames=columns_names)
             writer.writeheader()
 
@@ -57,7 +57,8 @@ def main(args):
                          'Capacity': capacity,
                          'Answer': np.asarray(result.answers),
                          'Actual Answer': actual_answer,
-                         'Match': match})
+                         'Match': match,
+                         'Counter': result.counter})
                                                  # 'Operations_amount': results.n_operations, 'File_length': len(text)})
                 # genetic_solver = algo.GeneticSolver(profits, weights, capacity)
                 #
@@ -112,7 +113,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--path', type=str,
-                        default='./benchmarks',
+                        default='./data/benchmarks.json',
                         help='path to benchmarks files')
     parser.add_argument('-exp_n', '--experiment_number', type=int,
                         default=5,
