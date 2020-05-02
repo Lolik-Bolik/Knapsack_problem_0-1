@@ -29,10 +29,17 @@ def main(args):
     with open(args.path) as f:
         file_content = f.read()
         benchmarks = json.loads(file_content)
-    capacity = benchmarks[str(2)]["capacity"][0]
-    input_items = [list(a) for a in zip(benchmarks[str(2)]['profits'], benchmarks[str(2)]['weights'])]
-    dynamic_solver = algo.DynamicSolver(input_items, capacity)
-    print(dynamic_solver.solve_knapsack_problem())
+    for n in range(1, len(benchmarks)):
+        capacity = benchmarks[str(n)]["capacity"][0]
+        input_items = [list(a) for a in zip(benchmarks[str(n)]['profits'], benchmarks[str(n)]['weights'])]
+        dynamic_solver = algo.DynamicSolver(input_items, capacity)
+        result = dynamic_solver.solve_knapsack_problem()
+        print('----------\n'
+              f'Time taken: {result.time}\n'
+              f'The answer is : {result.answers}\n'
+              f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n'
+              f'The final weight of knapsack is: {result.weight}\n'
+              f'The final profit of knapsack is: {result.profit}')
 
     # if args.make_csv:
     #     with open('statistic.csv', 'w') as file:
