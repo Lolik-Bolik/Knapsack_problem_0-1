@@ -1,9 +1,7 @@
-from algorithms import Results
+from algorithms.base import Results
 from time import time
-import itertools
 
 
-# A naive implementation of 0-1 Knapsack Problem
 class GreedySearch:
 
     def __init__(self, weights, profits, capacity):
