@@ -7,5 +7,5 @@ from typing import List
 class Results:
     answers: List[int] = field(default_factory=list)
     time: float = .0
-    weight = -1
-    profit = -1
+    weight = 0
+    profit = 0
