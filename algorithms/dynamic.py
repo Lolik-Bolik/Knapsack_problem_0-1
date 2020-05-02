@@ -1,4 +1,4 @@
-from algorithms import Results
+from algorithms.base import Results
 from time import time
 # import common_functions
 
@@ -23,7 +23,7 @@ class DynamicSolver:
             answers[ind] = 1
         return answers
 
-    def solve_knapsack_problem(self):
+    def solve(self):
         result = Results()
         start_time = time()
         knapsack_values = [[0 for x in range(0, self.capacity + 1)] for y in range(0, len(self.profits) + 1)]

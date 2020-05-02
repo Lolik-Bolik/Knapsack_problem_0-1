@@ -4,17 +4,18 @@ import random as rd
 from random import randint
 import matplotlib.pyplot as plt
 import random
-from algorithms import Results
+from algorithms.base import Results
 from time import time
 
+
 class GeneticSolver:
-    def __init__(self, profits, weights, capacity, num_generations):
+    def __init__(self, weights, profits, capacity):
         self.profits = profits
         self.weights = weights
         self.capacity = capacity
         self.population = None
         self.population_size = None
-        self.num_generations = num_generations
+        self.num_generations = 8
 
     def get_result_weight(self, indexes):
         weight = 0
@@ -30,10 +31,8 @@ class GeneticSolver:
                 profit += self.profits[i]
         return profit
 
-
-
     def set_initial_population(self):
-        chromosomes = pow(2, len(self.profits))
+        chromosomes = pow(len(self.profits), 2)
         self.population_size = (chromosomes, len(self.profits))
         self.population = np.random.randint(2, size=self.population_size).astype(int)
 
@@ -75,7 +74,7 @@ class GeneticSolver:
         # the rate of freq doing crossover
         crossover_rate = 0.8
         i = 0
-        while (parents.shape[0] < num_offsprings):
+        while (i < num_offsprings):
             x = rd.random()
             if x > crossover_rate:
                 continue
@@ -101,9 +100,10 @@ class GeneticSolver:
                 mutants[i, int_random_value] = 0
         return mutants
 
-    def optimize(self):
+    def solve(self):
         result = Results()
         start_time = time()
+        self.set_initial_population()
         parameters, fitness_history = [], []
         num_parents = int(self.population_size[0] / 2)
         num_offsprings = self.population_size[0] - num_parents

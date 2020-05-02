@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import json
 import numpy as np
+from tqdm import tqdm
 
 
 def draw_statistic(statistic, filename):
@@ -23,52 +24,54 @@ def draw_statistic(statistic, filename):
         plt.title('Среднее время работы', fontsize=20)
 
     plt.savefig(filename)
-    #plt.show()
-
-
-def genetic_graphic(num_generations, fitness_history, benchmark_number):
-        fitness_history_mean = [np.mean(fitness) for fitness in fitness_history]
-        fitness_history_max = [np.max(fitness) for fitness in fitness_history]
-        plt.plot(list(range(num_generations)), fitness_history_mean, label='Mean Fitness')
-        plt.plot(list(range(num_generations)), fitness_history_max, label='Max Fitness')
-        plt.legend()
-        plt.title('Fitness through the generations')
-        plt.xlabel('Generations')
-        plt.ylabel('Fitness')
-        plt.savefig(f'p_{benchmark_number}_set_genetic.png')
 
 
 def main(args):
     with open(args.path) as f:
         file_content = f.read()
         benchmarks = json.loads(file_content)
+    if args.make_csv:
+        with open('statistic.csv', 'w') as file:
+            columns_names = ['File name', 'Method name', 'Work time', 'Result Profit',
+                            'Result Weight','Capacity', 'Match']
+            writer = csv.DictWriter(file, fieldnames=columns_names)
+            writer.writeheader()
 
-    for n in range(1, len(benchmarks)):
-        capacity = benchmarks[str(n)]["capacity"][0]
-        weights = benchmarks[str(n)]['weights']
-        profits = benchmarks[str(n)]['profits']
-        genetic_solver = algo.GeneticSolver(profits, weights, capacity, 8)
-
-        genetic_solver.set_initial_population()
-        result = genetic_solver.optimize()
-        print('-------------------------------------------------\n')
-        print('The optimized parameters for the given inputs are: \n{}'.format(result.answers))
-        print(f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n')
-        # item_number = np.arange(1, len(profits) + 1)
-        # selected_items = item_number * parameters
-        # print('\nSelected items that will maximize the knapsack without breaking it:')
-        # for i in range(selected_items.shape[1]):
-        #     if selected_items[0][i] != 0:
-        #         print('{}\n'.format(selected_items[0][i]))
-        # # genetic_graphic(genetic_solver.num_generations, fitness_history, n)
-        # # dynamic_solver = algo.DynamicSolver(weights, profits, capacity)
-        # # result = dynamic_solver.solve_knapsack_problem()
-        # # print('----------\n'
-        # #       f'Time taken: {result.time}\n'
-        # #       f'The answer is : {result.answers}\n'
-        # #       f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n'
-        # #       f'The final weight of knapsack is: {result.weight}\n'
-        # #       f'The final profit of knapsack is: {result.profit}')
+            for n in tqdm(range(1, len(benchmarks))):
+                capacity = benchmarks[str(n)]["capacity"][0]
+                weights = benchmarks[str(n)]['weights']
+                profits = benchmarks[str(n)]['profits']
+                algorithms = [(name, f(weights, profits, capacity)) for name, f in algo.__dict__.items() if callable(f)]
+                for name, algorithm in algorithms:
+                    # print(name)
+                    result = algorithm.solve()
+                    print(name, result.answers)
+                    actual_answer = benchmarks[str(n)]["optimal"]
+                    match = True if (np.asarray(actual_answer) == np.asarray(result.answers)).all() else False
+                    writer.writerow(
+                        {'File name': f'{n}.txt', 'Method name': name,
+                         'Work time': result.time, 'Result Profit': result.profit, 'Result Weight': result.weight,
+                         'Capacity': capacity,
+                         'Match': match})
+                                                 # 'Operations_amount': results.n_operations, 'File_length': len(text)})
+                # genetic_solver = algo.GeneticSolver(profits, weights, capacity)
+                #
+                # genetic_solver.set_initial_population()
+                # result = genetic_solver.optimize()
+                # print(f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n')
+        #
+        # for n in tqdm(range(1, len(benchmarks) + 1)):
+        #     capacity = benchmarks[str(n)]["capacity"][0]
+        #     weights = benchmarks[str(n)]['weights']
+        #     profits = benchmarks[str(n)]['profits']
+        #     dynamic_solver = algo.DynamicSolver(weights, profits, capacity)
+        #     result = dynamic_solver.solve()
+        #     print('----------\n'
+        #               f'Time taken: {result.time}\n'
+        #           f'The answer is : {result.answers}\n'
+        #           f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n'
+        #           f'The final weight of knapsack is: {result.weight}\n'
+        #           f'The final profit of knapsack is: {result.profit}')
 
     # if args.make_csv:
     #     with open('statistic.csv', 'w') as file:
