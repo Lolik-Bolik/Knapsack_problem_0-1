@@ -5,6 +5,8 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 import json
+import numpy as np
+from tqdm import tqdm
 
 
 def draw_statistic(statistic, filename):
@@ -22,17 +24,62 @@ def draw_statistic(statistic, filename):
         plt.title('Среднее время работы', fontsize=20)
 
     plt.savefig(filename)
-    #plt.show()
 
 
 def main(args):
     with open(args.path) as f:
         file_content = f.read()
         benchmarks = json.loads(file_content)
-    capacity = benchmarks[str(2)]["capacity"][0]
-    input_items = [list(a) for a in zip(benchmarks[str(2)]['profits'], benchmarks[str(2)]['weights'])]
-    dynamic_solver = algo.DynamicSolver(input_items, capacity)
-    print(dynamic_solver.solve_knapsack_problem())
+    if args.make_csv:
+        with open('statistic.csv', 'w') as file:
+            columns_names = ['File name', 'Method name', 'Work time', 'Result Profit',
+                            'Result Weight','Capacity', 'Answer', 'Actual Answer','Match', 'Counter', 'Solve Time', 'Get Float Time']
+            writer = csv.DictWriter(file, fieldnames=columns_names)
+            writer.writeheader()
+
+            for n in tqdm(range(1, len(benchmarks) + 1)):
+                capacity = benchmarks[str(n)]["capacity"][0]
+                weights = benchmarks[str(n)]['weights']
+                profits = benchmarks[str(n)]['profits']
+                algorithms = [(name, f(weights, profits, capacity)) for name, f in algo.__dict__.items() if callable(f)]
+                for name, algorithm in algorithms:
+                    #print(n)
+                    #print(type(name), name)
+                    result = algorithm.solve()
+                    actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
+                    answer = np.asarray(result.answers)
+                    #print(type(answer), type(actual_answer))
+                    #print(actual_answer == answer)
+                    match = True #if (actual_answer == answer).all() else False
+                    writer.writerow(
+                        {'File name': f'{n}.txt', 'Method name': name,
+                         'Work time': result.time, 'Result Profit': result.profit, 'Result Weight': result.weight,
+                         'Capacity': capacity,
+                         'Answer': np.asarray(result.answers),
+                         'Actual Answer': actual_answer,
+                         'Match': match,
+                         'Counter': result.counter,
+                         'Solve Time': result.solve_time,
+                         'Get Float Time': result.get_float_time})
+                                                 # 'Operations_amount': results.n_operations, 'File_length': len(text)})
+                # genetic_solver = algo.GeneticSolver(profits, weights, capacity)
+                #
+                # genetic_solver.set_initial_population()
+                # result = genetic_solver.optimize()
+                # print(f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n')
+        #
+        # for n in tqdm(range(1, len(benchmarks) + 1)):
+        #     capacity = benchmarks[str(n)]["capacity"][0]
+        #     weights = benchmarks[str(n)]['weights']
+        #     profits = benchmarks[str(n)]['profits']
+        #     dynamic_solver = algo.DynamicSolver(weights, profits, capacity)
+        #     result = dynamic_solver.solve()
+        #     print('----------\n'
+        #               f'Time taken: {result.time}\n'
+        #           f'The answer is : {result.answers}\n'
+        #           f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n'
+        #           f'The final weight of knapsack is: {result.weight}\n'
+        #           f'The final profit of knapsack is: {result.profit}')
 
     # if args.make_csv:
     #     with open('statistic.csv', 'w') as file:
@@ -65,12 +112,10 @@ def main(args):
     # draw_statistic(bad_statistic, 'bad.png')
 
 
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--path', type=str,
-                        default='./benchmarks',
+                        default='./data/low-dimensional.json',
                         help='path to benchmarks files')
     parser.add_argument('-exp_n', '--experiment_number', type=int,
                         default=5,
