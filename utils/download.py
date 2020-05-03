@@ -81,10 +81,10 @@ def main():
         print(f.write(json.dumps(large_scale_dict)))
         print('Large scale saved!')
 
-    numbers = np.arange(1, 8)
-    benchmarks = {int(k): get_knapsack(n='0' + str(k)) for k in numbers}
-    with open('../data/benchmarks.json', 'w') as f:
-        f.write(json.dumps(benchmarks))
+    # numbers = np.arange(1, 8)
+    # benchmarks = {int(k): get_knapsack(n='0' + str(k)) for k in numbers}
+    # with open('../data/benchmarks.json', 'w') as f:
+    #     f.write(json.dumps(benchmarks))
 
 
 if __name__ == '__main__':

@@ -58,16 +58,17 @@ def main(args):
                 #          # 'Actual profit': benchmarks[str(n)]['optim_value'],
                 #          'Match': match})
                 # 'Operations_amount': results.n_operations, 'File_length': len(text)})
-            genetic_solver = algo.GeneticSolver(profits, weights, capacity)
+            genetic_solver = algo.GeneticSolver(weights, profits,capacity)
 
             genetic_solver.set_initial_population()
             result = genetic_solver.solve()
-            actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
-            answer = np.asarray(result.answers)
-            match = True if (actual_answer == answer).all() else False
-            print(f'Answer is {result.answers}, {match}')
-            print(sum(itertools.compress(profits, actual_answer)))
-            print(f'The actual answer is: {actual_answer}\n')
+            # actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
+            # answer = np.asarray(result.answers)
+            # match = True if (actual_answer == answer).all() else False
+            print(f'Answer is {result.answers}')
+            print(f'Actual profit is :{benchmarks[str(n)]["optim_value"]}')
+            # print(sum(itertools.compress(profits, actual_answer)))
+            print(f'The profit answer is: {sum(itertools.compress(profits, result.answers))}\n')
 
         # for n in tqdm(range(1, len(benchmarks) + 1)):
         #     capacity = benchmarks[str(n)]["capacity"][0]

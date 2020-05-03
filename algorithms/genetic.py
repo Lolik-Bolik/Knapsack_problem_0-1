@@ -10,7 +10,7 @@ import itertools
 
 
 class GeneticSolver:
-    def __init__(self, weights, profits, capacity):
+    def __init__(self, weights, profits,  capacity):
         self.profits = profits
         self.weights = weights
         self.capacity = capacity
@@ -33,7 +33,7 @@ class GeneticSolver:
         return profit
 
     def set_initial_population(self):
-        chromosomes = pow(2, len(self.profits))
+        chromosomes = pow(len(self.profits), 2)
         self.population_size = (chromosomes, len(self.profits))
         self.population = np.random.randint(2, size=self.population_size).astype(int)
 
@@ -73,9 +73,9 @@ class GeneticSolver:
         # change a half of a chromosome
         crossover_point = int(parents.shape[1] / 2)
         # the rate of freq doing crossover
-        crossover_rate = 0.4
+        crossover_rate = 0.8
         i = 0
-        while (parents.shape[0] < num_offsprings):
+        while (i < num_offsprings):
             x = rd.random()
             if x > crossover_rate:
                 continue
@@ -88,7 +88,7 @@ class GeneticSolver:
 
     def mutation(self, offsprings):
         mutants = np.empty((offsprings.shape))
-        mutation_rate = 0.2
+        mutation_rate = 0.6
         for i in range(mutants.shape[0]):
             random_value = rd.random()
             mutants[i, :] = offsprings[i, :]
@@ -120,11 +120,7 @@ class GeneticSolver:
         num_parents = int(self.population_size[0] / 2)
         num_offsprings = self.population_size[0] - num_parents
         for i in range(self.num_generations):
-            print(i)
             fitness = self.cal_fitness()
-            max_fitness = np.where(fitness == np.max(fitness))
-            running_answer = self.population[max_fitness[0][0], :]
-            print(running_answer)
             fitness_history.append(fitness)
             new_generation = self.selection(fitness, num_parents)
             offsprings = self.crossover(new_generation, num_offsprings)
