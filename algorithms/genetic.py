@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import random
 from algorithms.base import Results
 from time import time
+import itertools
 
 
 class GeneticSolver:
@@ -15,7 +16,7 @@ class GeneticSolver:
         self.capacity = capacity
         self.population = None
         self.population_size = None
-        self.num_generations = 8
+        self.num_generations = 20
 
     def get_result_weight(self, indexes):
         weight = 0
@@ -32,7 +33,7 @@ class GeneticSolver:
         return profit
 
     def set_initial_population(self):
-        chromosomes = pow(len(self.profits), 2)
+        chromosomes = pow(2, len(self.profits))
         self.population_size = (chromosomes, len(self.profits))
         self.population = np.random.randint(2, size=self.population_size).astype(int)
 
@@ -72,9 +73,9 @@ class GeneticSolver:
         # change a half of a chromosome
         crossover_point = int(parents.shape[1] / 2)
         # the rate of freq doing crossover
-        crossover_rate = 0.8
+        crossover_rate = 0.4
         i = 0
-        while (i < num_offsprings):
+        while (parents.shape[0] < num_offsprings):
             x = rd.random()
             if x > crossover_rate:
                 continue
@@ -87,7 +88,7 @@ class GeneticSolver:
 
     def mutation(self, offsprings):
         mutants = np.empty((offsprings.shape))
-        mutation_rate = 0.4
+        mutation_rate = 0.2
         for i in range(mutants.shape[0]):
             random_value = rd.random()
             mutants[i, :] = offsprings[i, :]
@@ -100,6 +101,17 @@ class GeneticSolver:
                 mutants[i, int_random_value] = 0
         return mutants
 
+    def test(self, fit_lst, pconverge, n):
+        profits = fit_lst.tolist()
+        maximum = max(profits)
+        max_n = profits.count(maximum)
+        # print(sorted(profits))
+        self.converged = max_n / n
+        if self.converged > pconverge:
+            return True
+        else:
+            return False
+
     def solve(self):
         result = Results()
         start_time = time()
@@ -108,7 +120,11 @@ class GeneticSolver:
         num_parents = int(self.population_size[0] / 2)
         num_offsprings = self.population_size[0] - num_parents
         for i in range(self.num_generations):
+            print(i)
             fitness = self.cal_fitness()
+            max_fitness = np.where(fitness == np.max(fitness))
+            running_answer = self.population[max_fitness[0][0], :]
+            print(running_answer)
             fitness_history.append(fitness)
             new_generation = self.selection(fitness, num_parents)
             offsprings = self.crossover(new_generation, num_offsprings)
@@ -120,9 +136,9 @@ class GeneticSolver:
         result_answer = self.population[max_fitness[0][0], :]
         finish_time = time()
         result.time = np.round(finish_time - start_time, 4)
-        result.weight = self.get_result_weight(result_answer)
+        result.weight = sum(itertools.compress(self.weights, result_answer))
         result.answers = result_answer
-        result.profit = self.get_result_profit(result_answer)
+        result.profit = sum(itertools.compress(self.profits, result_answer))
         return result
 
 
