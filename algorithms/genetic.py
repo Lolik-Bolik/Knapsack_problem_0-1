@@ -18,20 +18,6 @@ class GeneticSolver:
         self.population_size = None
         self.num_generations = 20
 
-    def get_result_weight(self, indexes):
-        weight = 0
-        for i in range(len(self.profits)):
-            if i in indexes:
-                weight += self.weights[i]
-        return weight
-
-    def get_result_profit(self, indexes):
-        profit = 0
-        for i in range(len(self.profits)):
-            if i in indexes:
-                profit += self.profits[i]
-        return profit
-
     def set_initial_population(self):
         chromosomes = pow(len(self.profits), 2)
         self.population_size = (chromosomes, len(self.profits))
@@ -100,17 +86,6 @@ class GeneticSolver:
             else:
                 mutants[i, int_random_value] = 0
         return mutants
-
-    def test(self, fit_lst, pconverge, n):
-        profits = fit_lst.tolist()
-        maximum = max(profits)
-        max_n = profits.count(maximum)
-        # print(sorted(profits))
-        self.converged = max_n / n
-        if self.converged > pconverge:
-            return True
-        else:
-            return False
 
     def solve(self):
         result = Results()
