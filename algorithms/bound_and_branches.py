@@ -31,7 +31,7 @@ class BranchBound:
             solver.solve()
             self.solve_time += (time() - timer)
         except CplexError:
-            return
+            return result
         solution = solver.solution.get_values()
         is_float = np.mod(solution, 1)
         if self.check_integer(is_float):
