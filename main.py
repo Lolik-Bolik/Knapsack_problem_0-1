@@ -37,7 +37,7 @@ def main(args):
             writer = csv.DictWriter(file, fieldnames=columns_names)
             writer.writeheader()
 
-            for n in tqdm(range(1, len(benchmarks))):
+            for n in tqdm(range(1, len(benchmarks) + 1)):
                 capacity = benchmarks[str(n)]["capacity"][0]
                 weights = benchmarks[str(n)]['weights']
                 profits = benchmarks[str(n)]['profits']
@@ -45,9 +45,11 @@ def main(args):
                 for name, algorithm in algorithms:
                     # print(name)
                     result = algorithm.solve()
-                    print(name, result.answers)
                     actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
-                    match = True if (actual_answer == np.asarray(result.answers)).all() else False
+                    answer = np.asarray(result.answers)
+                    print(type(answer), type(actual_answer))
+                    print(actual_answer == answer)
+                    match = True if (actual_answer == answer).all() else False
                     writer.writerow(
                         {'File name': f'{n}.txt', 'Method name': name,
                          'Work time': result.time, 'Result Profit': result.profit, 'Result Weight': result.weight,
