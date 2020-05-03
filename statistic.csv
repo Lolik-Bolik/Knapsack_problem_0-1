@@ -1,15 +1,37 @@
-File name,Method name,Work time,Result Profit,Result Weight,Capacity,Actual profit,Match
-1.txt,DynamicSolver,0.0003,309,165,165,,True
-1.txt,GeneticSolver,0.0032,149,54,165,,True
-2.txt,DynamicSolver,0.0,51,26,26,,True
-2.txt,GeneticSolver,0.0005,37,19,26,,True
-3.txt,DynamicSolver,0.0002,150,190,190,,True
-3.txt,GeneticSolver,0.0005,100,115,190,,True
-4.txt,DynamicSolver,0.0001,107,50,50,,True
-4.txt,GeneticSolver,0.0038,90,41,50,,True
-5.txt,DynamicSolver,0.0002,900,104,104,,True
-5.txt,GeneticSolver,0.0046,750,60,104,,True
-6.txt,DynamicSolver,0.0002,1735,169,170,,True
-6.txt,GeneticSolver,0.0035,967,91,170,,True
-7.txt,DynamicSolver,0.0026,1458,749,750,,True
-7.txt,GeneticSolver,0.0055,274,143,750,,True
+File name,Method name,Work time,Result Profit,Result Weight,Capacity,Answer,Actual Answer,Match,Counter,Solve Time,Get Float Time
+1.txt,DynamicSolver,0.0,23,11,11,[0 1 0 1],[],True,0,0,0
+1.txt,GeneticSolver,0.0303,23,11,11,[0 1 0 1],[],True,0,0,0
+1.txt,ExhaustiveSearch,2.6941299438476562e-05,23,11,11,[0 1 0 1],[],True,16,0,0
+1.txt,GreedySearch,1.1205673217773438e-05,16,6,11,[1 1 0 0],[],True,0,0,0
+2.txt,DynamicSolver,0.0056,1024,871,878,[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1],[],True,0,0,0
+2.txt,GeneticSolver,0.4326,1024,871,878,[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1],[],True,0,0,0
+2.txt,ExhaustiveSearch,1.5144736766815186,1024,871,878,[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1],[],True,1048576,0,0
+2.txt,GreedySearch,3.3855438232421875e-05,1018,837,878,[1 1 1 1 1 1 1 0 1 1 1 1 1 0 1 0 1 1 1 1],[],True,0,0,0
+3.txt,DynamicSolver,0.0058,1025,871,879,[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1],[],True,0,0,0
+3.txt,GeneticSolver,0.4418,1025,871,879,[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1],[],True,0,0,0
+3.txt,ExhaustiveSearch,1.4568264484405518,1025,871,879,[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1],[],True,1048576,0,0
+3.txt,GreedySearch,2.3365020751953125e-05,1019,837,879,[1 1 1 1 1 1 0 1 1 0 1 1 1 1 1 1 0 1 1 1],[],True,0,0,0
+4.txt,DynamicSolver,0.0007,295,269,269,[0 1 1 1 0 0 0 1 1 1],[],True,0,0,0
+4.txt,GeneticSolver,0.063,295,269,269,[0 1 1 1 0 0 0 1 1 1],[],True,0,0,0
+4.txt,ExhaustiveSearch,0.0010454654693603516,295,269,269,[0 1 1 1 0 0 0 1 1 1],[],True,1024,0,0
+4.txt,GreedySearch,1.5020370483398438e-05,294,260,269,[0 1 1 0 1 0 0 1 1 1],[],True,0,0,0
+5.txt,DynamicSolver,0.0001,107,50,50,[1 0 0 1 0 0 0],[],True,0,0,0
+5.txt,GeneticSolver,0.0273,107,50,50,[1 0 0 1 0 0 0],[],True,0,0,0
+5.txt,ExhaustiveSearch,0.0001266002655029297,107,50,50,[1 0 0 1 0 0 0],[],True,128,0,0
+5.txt,GreedySearch,1.1920928955078125e-05,102,48,50,[1 1 0 0 1 1 0],[],True,0,0,0
+6.txt,DynamicSolver,0.0749,9767,9768,10000,[1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0],[],True,0,0,0
+6.txt,GeneticSolver,0.6557,9754,9755,10000,[1 1 1 0 1 1 0 1 0 1 0 0 1 0 0 1 1 1 0 0 0 0 0],[],True,0,0,0
+6.txt,ExhaustiveSearch,12.437313556671143,9767,9768,10000,[1 1 1 1 1 1 1 1 0 0 1 0 0 0 0 1 1 0 0 0 0 0 0],[],True,8388608,0,0
+6.txt,GreedySearch,2.2411346435546875e-05,9751,9750,10000,[1 1 1 1 1 1 1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 1 0],[],True,0,0,0
+7.txt,DynamicSolver,0.0002,52,60,60,[0 0 1 1 1 0 1 0 0 0],[],True,0,0,0
+7.txt,GeneticSolver,0.0673,52,58,60,[0 0 1 1 0 1 1 1 1 1],[],True,0,0,0
+7.txt,ExhaustiveSearch,0.0010704994201660156,52,57,60,[0 0 1 0 1 1 1 1 1 1],[],True,1024,0,0
+7.txt,GreedySearch,2.1457672119140625e-05,52,57,60,[0 0 1 0 1 1 1 1 1 1],[],True,0,0,0
+8.txt,DynamicSolver,0.0,35,18,20,[1 1 0 1],[],True,0,0,0
+8.txt,GeneticSolver,0.009,35,18,20,[1 1 0 1],[],True,0,0,0
+8.txt,ExhaustiveSearch,2.1696090698242188e-05,35,18,20,[1 1 0 1],[],True,16,0,0
+8.txt,GreedySearch,1.1205673217773438e-05,35,18,20,[1 1 0 1],[],True,0,0,0
+9.txt,DynamicSolver,0.0001,130,60,80,[1 1 1 1 0],[],True,0,0,0
+9.txt,GeneticSolver,0.0149,130,60,80,[1 1 1 1 0],[],True,0,0,0
+9.txt,ExhaustiveSearch,3.695487976074219e-05,130,60,80,[1 1 1 1 0],[],True,32,0,0
+9.txt,GreedySearch,1.2874603271484375e-05,130,60,80,[1 1 1 1 0],[],True,0,0,0
