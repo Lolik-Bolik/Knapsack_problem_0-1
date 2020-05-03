@@ -43,7 +43,8 @@ def main(args):
                 profits = benchmarks[str(n)]['profits']
                 algorithms = [(name, f(weights, profits, capacity)) for name, f in algo.__dict__.items() if callable(f)]
                 for name, algorithm in algorithms:
-                    # print(name)
+                    print(n)
+                    print(type(name), name)
                     result = algorithm.solve()
                     actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
                     answer = np.asarray(result.answers)

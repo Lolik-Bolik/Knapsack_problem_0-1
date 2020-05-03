@@ -57,8 +57,6 @@ def main():
         print(complexity)
         files = glob.glob('../data/' + complexity + '/*')
         for i in range(1, len(files) + 1):
-            if 'kp_15_375' in files[i-1]:
-                continue
             if complexity == complexities[0]:
                 knapsack = get_data(files[i - 1], with_optimum=False)
             else:
