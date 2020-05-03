@@ -22,7 +22,7 @@ class GreedySearch:
                 result.answers[item[0]] = 1
                 result.weight += self.weights[item[0]]
                 result.profit += self.profits[item[0]]
-
+        result.time = time() - result.time
         return result
 
 

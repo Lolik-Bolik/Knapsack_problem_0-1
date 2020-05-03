@@ -8,3 +8,5 @@ class Results:
     weight = 0
     profit = 0
     counter = 0
+    solve_time = 0
+    get_float_time = 0
