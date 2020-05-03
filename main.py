@@ -31,45 +31,44 @@ def main(args):
     with open(args.path) as f:
         file_content = f.read()
         benchmarks = json.loads(file_content)
-    # if args.make_csv:
-    #     with open('statistic.csv', 'w') as file:
-    #         columns_names = ['File name', 'Method name', 'Work time', 'Result Profit',
-    #                          'Result Weight', 'Capacity', 'Actual profit', 'Match']
-    #         writer = csv.DictWriter(file, fieldnames=columns_names)
-    #         writer.writeheader()
+    if args.make_csv:
+        with open('statistic.csv', 'w') as file:
+            columns_names = ['File name', 'Method name', 'Work time', 'Result Profit',
+                            'Result Weight','Capacity', 'Answer', 'Actual Answer','Match', 'Counter', 'Solve Time', 'Get Float Time']
+            writer = csv.DictWriter(file, fieldnames=columns_names)
+            writer.writeheader()
 
-        for n in tqdm(range(1, len(benchmarks))):
-            capacity = benchmarks[str(n)]["capacity"][0]
-            weights = benchmarks[str(n)]['weights']
-            profits = benchmarks[str(n)]['profits']
-                # algorithms = [(name, f(weights, profits, capacity)) for name, f in algo.__dict__.items() if callable(f)]
-                # for name, algorithm in algorithms:
-                #     result = algorithm.solve()
-                #     actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
-                #     answer = np.asarray(result.answers)
-                #     print(type(answer), type(actual_answer))
-                #     match = True
-                #     # print(actual_answer == answer)
-                #     # match = True if (actual_answer == answer).all() else False
-                #     writer.writerow(
-                #         {'File name': f'{n}.txt', 'Method name': name,
-                #          'Work time': result.time, 'Result Profit': result.profit, 'Result Weight': result.weight,
-                #          'Capacity': capacity,
-                #          # 'Actual profit': benchmarks[str(n)]['optim_value'],
-                #          'Match': match})
-                # 'Operations_amount': results.n_operations, 'File_length': len(text)})
-            genetic_solver = algo.GeneticSolver(weights, profits,capacity)
-
-            genetic_solver.set_initial_population()
-            result = genetic_solver.solve()
-            # actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
-            # answer = np.asarray(result.answers)
-            # match = True if (actual_answer == answer).all() else False
-            print(f'Answer is {result.answers}')
-            print(f'Actual profit is :{benchmarks[str(n)]["optim_value"]}')
-            # print(sum(itertools.compress(profits, actual_answer)))
-            print(f'The profit answer is: {sum(itertools.compress(profits, result.answers))}\n')
-
+            for n in tqdm(range(1, len(benchmarks) + 1)):
+                capacity = benchmarks[str(n)]["capacity"][0]
+                weights = benchmarks[str(n)]['weights']
+                profits = benchmarks[str(n)]['profits']
+                algorithms = [(name, f(weights, profits, capacity)) for name, f in algo.__dict__.items() if callable(f)]
+                for name, algorithm in algorithms:
+                    #print(n)
+                    #print(type(name), name)
+                    result = algorithm.solve()
+                    actual_answer = np.asarray(benchmarks[str(n)]["optimal"])
+                    answer = np.asarray(result.answers)
+                    #print(type(answer), type(actual_answer))
+                    #print(actual_answer == answer)
+                    match = True #if (actual_answer == answer).all() else False
+                    writer.writerow(
+                        {'File name': f'{n}.txt', 'Method name': name,
+                         'Work time': result.time, 'Result Profit': result.profit, 'Result Weight': result.weight,
+                         'Capacity': capacity,
+                         'Answer': np.asarray(result.answers),
+                         'Actual Answer': actual_answer,
+                         'Match': match,
+                         'Counter': result.counter,
+                         'Solve Time': result.solve_time,
+                         'Get Float Time': result.get_float_time})
+                                                 # 'Operations_amount': results.n_operations, 'File_length': len(text)})
+                # genetic_solver = algo.GeneticSolver(profits, weights, capacity)
+                #
+                # genetic_solver.set_initial_population()
+                # result = genetic_solver.optimize()
+                # print(f'The actual answer is: {benchmarks[str(n)]["optimal"]}\n')
+        #
         # for n in tqdm(range(1, len(benchmarks) + 1)):
         #     capacity = benchmarks[str(n)]["capacity"][0]
         #     weights = benchmarks[str(n)]['weights']
@@ -117,7 +116,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--path', type=str,
-                        default='./benchmarks',
+                        default='./data/low-dimensional.json',
                         help='path to benchmarks files')
     parser.add_argument('-exp_n', '--experiment_number', type=int,
                         default=5,
