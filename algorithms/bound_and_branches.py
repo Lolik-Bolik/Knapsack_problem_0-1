@@ -23,7 +23,6 @@ class BranchBound:
         result = Results()
         result.time = time()
         solver, x_names = self.initialize_solver()
-        #solver.variables.advanced.tighten_upper_bounds(4, 0)
         try:
             solver.solve()
         except CplexError:
@@ -32,69 +31,23 @@ class BranchBound:
         if self.check_integer(solution):
             self.optimal_solution = solution
         else:
-            float_variables = self.get_float_values(solution)  # TODO: Implement sorting before taking indexes
+            float_variables = self.get_float_values(solution)# TODO: Implement sorting before taking indexes
             for variable in float_variables:
-                self.recursive_solve_left(solver, variable)
-                self.recursive_solve_right(solver, variable)
+                self.recursive_solve(solver, variable, 'left')
+                self.recursive_solve(solver, variable, 'right')
         result.answers = self.optimal_solution
         result.time = time() - result.time
         result.weight = sum(itertools.compress(self.weights, self.optimal_solution))
         result.profit = sum(itertools.compress(self.profits, self.optimal_solution))
         result.counter = self.counter
         return result
-        # except CplexError:
-        #     return
-    # Variable is set to zero
-    def recursive_solve_left(self, solver, float_variable):
+
+    def recursive_solve(self, solver, float_variable, branch):
         self.counter += 1
-        # It also could be done with solver.linear_constraints.add but I've chosen this way
-        # Probably the other one is more correct but this path works, actually ^_^
+        rhs = [0] if branch == 'left' else [1]
         solver.linear_constraints.add(lin_expr=[[[int(float_variable)], [1]]],
                                       senses='E',
-                                      rhs=[0],
-                                      names=[f'c{float_variable}']
-                                      )
-        try:
-            solver.solve()
-        except CplexError:
-            solver.linear_constraints.delete(f'c{float_variable}')
-            return
-        solution = solver.solution.get_values()
-        # WTF, у меня тут стоят ограничения на переменную, а солвер на них забивает и выдает отрицательное чиисло
-        # Поэтому мы залетаем в цикл и ловим recursion depth
-        if solver.solution.get_status() != 1: # This status claims optimal solution
-            solver.linear_constraints.delete(f'c{float_variable}')
-            return
-        obj_value = solver.solution.get_objective_value()
-        if self.check_integer(solution):
-            if self.curr_lower_bound < obj_value:
-                self.curr_lower_bound = obj_value
-                self.optimal_solution = solution
-                solver.linear_constraints.delete(f'c{float_variable}')
-                return
-            else:
-                solver.linear_constraints.delete(f'c{float_variable}')
-                return
-        elif self.curr_lower_bound > obj_value:
-            solver.linear_constraints.delete(f'c{float_variable}')
-            return
-        else:
-            float_variables = self.get_float_values(solution)
-            for variable in float_variables:
-                self.recursive_solve_left(solver, variable)
-                self.recursive_solve_right(solver, variable)
-                solver.linear_constraints.delete(f'c{float_variable}')
-                return
-
-    # Variable is set to one
-    def recursive_solve_right(self, solver, float_variable):
-        self.counter += 1
-        # It also could be done with solver.linear_constraints.add but I've chosen this way
-        # Probably the other one is more correct but this path works, actually ^_^
-
-        solver.linear_constraints.add(lin_expr=[[[int(float_variable)], [1]]],
-                                      senses='E',
-                                      rhs=[1],
+                                      rhs=rhs,
                                       names=[f'c{float_variable}']
                                       )
         try:
@@ -122,8 +75,8 @@ class BranchBound:
         else:
             float_variables = self.get_float_values(solution)
             for variable in float_variables:
-                self.recursive_solve_left(solver, variable)
-                self.recursive_solve_right(solver, variable)
+                self.recursive_solve(solver, variable, 'left')
+                self.recursive_solve(solver, variable, 'right')
                 solver.linear_constraints.delete(f'c{float_variable}')
                 return
 
