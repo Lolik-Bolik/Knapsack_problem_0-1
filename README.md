@@ -11,216 +11,345 @@
 Кроме того, в связи с недетерминированностью генетического алгоритма, он может ошибаться на некоторых сэмплах, что и видно из таблицы
 ### knapsack_1
 
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|DynamicSolver   |0.0006                |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]          |True |
-|GeneticSolver   |0.0578                |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]          |True |
-|ExhaustiveSearch|0.0009944438934326172 |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]          |True |
-|GreedySearch    |1.2874603271484375e-05|309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]          |True |
-|BranchBound     |0.020967960357666016  |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]|True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|DynamicSolver   |0.0004   |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]|True |
+|GeneticSolver   |0.0659   |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]|True |
+|ExhaustiveSearch|0.0011   |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]|True |
+|GreedySearch    |0.0      |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]|True |
+|BranchBound     |0.0221   |309          |309        |165          |165     |[1 1 1 1 0 1 0 0 0 0]|True |
+
 ### knapsack_2
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|BranchBound     |0.007566213607788086  |51           |51         |26           |26      |[0 1 1 1 0]               |True |
-|ExhaustiveSearch|4.363059997558594e-05 |51           |51         |26           |26      |[0 1 1 1 0]                    |True |
-|GreedySearch    |1.0013580322265623e-05|47           |51         |23           |26      |[1 0 1 0 0]                    |False|
-|DynamicSolver   |0.0001                |51           |51         |26           |26      |[0 1 1 1 0]                    |True |
-|GeneticSolver   |0.0172                |51           |51         |26           |26      |[0 1 1 1 0]                    |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|BranchBound     |0.0094   |51           |51         |26           |26      |[0 1 1 1 0]          |True |
+|ExhaustiveSearch|0.0      |51           |51         |26           |26      |[0 1 1 1 0]          |True |
+|GreedySearch    |0.0      |47           |51         |23           |26      |[1 0 1 0 0]          |False|
+|DynamicSolver   |0.0001   |51           |51         |26           |26      |[0 1 1 1 0]          |True |
+|GeneticSolver   |0.0187   |51           |51         |26           |26      |[0 1 1 1 0]          |True |
+
 ### knapsack_3
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|DynamicSolver   |0.0003                |150          |150        |190          |190     |[1 1 0 0 1 0]                  |True |
-|GeneticSolver   |0.0171                |119          |150        |172          |190     |[0 0 1 0 1 1]                  |False|
-|ExhaustiveSearch|6.389617919921875e-05 |150          |150        |190          |190     |[1 1 0 0 1 0]                  |True |
-|GreedySearch    |9.775161743164062e-06 |146          |150        |179          |190     |[1 1 0 1 0 0]                  |False|
-|BranchBound     |0.006632089614868164  |150          |150        |190          |190     |[1 1 0 0 1 0]            |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|DynamicSolver   |0.0003   |150          |150        |190          |190     |[1 1 0 0 1 0]        |True |
+|GeneticSolver   |0.0211   |150          |150        |190          |190     |[1 1 0 0 1 0]        |True |
+|ExhaustiveSearch|0.0001   |150          |150        |190          |190     |[1 1 0 0 1 0]        |True |
+|GreedySearch    |0.0      |146          |150        |179          |190     |[1 1 0 1 0 0]        |False|
+|BranchBound     |0.0086   |150          |150        |190          |190     |[1 1 0 0 1 0]        |True |
+
 
 ### knapsack_4
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|BranchBound     |0.005627155303955078  |107          |107        |50           |50      |[1 0 0 1 0 0 0]         |True |
-|GreedySearch    |1.049041748046875e-05 |102          |107        |48           |50      |[1 1 0 0 1 1 0]                |False|
-|ExhaustiveSearch|0.00012111663818359375|107          |107        |50           |50      |[1 0 0 1 0 0 0]                |True |
-|GeneticSolver   |0.0238                |105          |107        |50           |50      |[1 1 0 0 0 1 1]                |False|
-|DynamicSolver   |0.0001                |107          |107        |50           |50      |[1 0 0 1 0 0 0]                |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|BranchBound     |0.0076   |107          |107        |50           |50      |[1 0 0 1 0 0 0]      |True |
+|GreedySearch    |0.0      |102          |107        |48           |50      |[1 1 0 0 1 1 0]      |False|
+|ExhaustiveSearch|0.0001   |107          |107        |50           |50      |[1 0 0 1 0 0 0]      |True |
+|GeneticSolver   |0.0296   |107          |107        |50           |50      |[1 0 0 1 0 0 0]      |True |
+|DynamicSolver   |0.0001   |107          |107        |50           |50      |[1 0 0 1 0 0 0]      |True |
+
 ### knapsack_5
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|DynamicSolver   |0.0002                |900          |900        |104          |104     |[1 0 1 1 1 0 1 1]              |True |
-|GeneticSolver   |0.0345                |900          |900        |104          |104     |[1 0 1 1 1 0 1 1]              |True |
-|ExhaustiveSearch|0.0003082752227783203 |900          |900        |104          |104     |[1 0 1 1 1 0 1 1]              |True |
-|GreedySearch    |1.4543533325195312e-05|858          |900        |97           |104     |[1 1 0 1 1 1 1 1]              |False|
-|BranchBound     |0.008033990859985352  |900          |900        |104          |104     |[1 0 1 1 1 0 1 1]      |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|DynamicSolver   |0.0002   |900          |900        |104          |104     |[1 0 1 1 1 0 1 1]    |True |
+|GeneticSolver   |0.0391   |900          |900        |104          |104     |[1 0 1 1 1 0 1 1]    |True |
+|ExhaustiveSearch|0.0003   |900          |900        |104          |104     |[1 0 1 1 1 0 1 1]    |True |
+|GreedySearch    |0.0      |858          |900        |97           |104     |[1 1 0 1 1 1 1 1]    |False|
+|BranchBound     |0.0083   |900          |900        |104          |104     |[1 0 1 1 1 0 1 1]    |True |
+
 
 ### knapsack_6
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|BranchBound     |0.03552460670471192   |1735         |1735       |169          |170     |[0 1 0 1 0 0 1]         |True |
-|GreedySearch    |1.3113021850585938e-05|1478         |1735       |140          |170     |[1 1 1 0 0 0 0]                |False|
-|GeneticSolver   |0.0257                |1706         |1735       |167          |170     |[0 1 0 0 0 1 1]                |False|
-|DynamicSolver   |0.0003                |1735         |1735       |169          |170     |[0 1 0 1 0 0 1]                |True |
-|ExhaustiveSearch|0.00012302398681640625|1735         |1735       |169          |170     |[0 1 0 1 0 0 1]                |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|BranchBound     |0.0361   |1735         |1735       |169          |170     |[0 1 0 1 0 0 1]      |True |
+|GreedySearch    |0.0      |1478         |1735       |140          |170     |[1 1 1 0 0 0 0]      |False|
+|GeneticSolver   |0.0286   |1735         |1735       |169          |170     |[0 1 0 1 0 0 1]      |True |
+|DynamicSolver   |0.0003   |1735         |1735       |169          |170     |[0 1 0 1 0 0 1]      |True |
+|ExhaustiveSearch|0.0001   |1735         |1735       |169          |170     |[0 1 0 1 0 0 1]      |True |
+
 ### knapsack_7
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|GreedySearch    |1.883506774902344e-05 |1441         |1458       |740          |750     |[1 1 1 0 0 0 1 1 1 0 0 0 0 1 1]|False|
-|DynamicSolver   |0.0034                |1458         |1458       |749          |750     |[1 0 1 0 1 0 1 1 1 0 0 0 0 1 1]|True |
-|GeneticSolver   |0.1671                |1449         |1458       |750          |750     |[1 1 1 0 0 1 1 0 0 0 0 0 1 1 1]|False|
-|ExhaustiveSearch|0.060419797897338874  |1458         |1458       |749          |750     |[1 0 1 0 1 0 1 1 1 0 0 0 0 1 1]|True |
-|BranchBound     |0.10661792755126953   |1458         |1458       |749          |750     |[1 0 1 0 1 0 1 1 1 0 0 0 0 1 1]|True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|GreedySearch    |0.0      |1441         |1458       |740          |750     |[1 1 1 0 0 0 1 1 1 0 0 0 0 1 1]|False|
+|DynamicSolver   |0.0034   |1458         |1458       |749          |750     |[1 0 1 0 1 0 1 1 1 0 0 0 0 1 1]|True |
+|GeneticSolver   |0.1789   |1456         |1458       |750          |750     |[0 1 1 1 0 0 1 1 1 0 0 0 0 1 1]|False|
+|ExhaustiveSearch|0.0646   |1458         |1458       |749          |750     |[1 0 1 0 1 0 1 1 1 0 0 0 0 1 1]|True |
+|BranchBound     |0.1096   |1458         |1458       |749          |750     |[1 0 1 0 1 0 1 1 1 0 0 0 0 1 1]|True |
+
 
 В следующей таблице можно увидеть сравнение алгоритмов `BranchAndBound` и `ExhaustiveSearch`, поскольку оба эти алгоритма пробегают по дереву перебора.
 Из этой таблицы можно увидеть, сколько узлов пробегает каждый алгоритм, а также можно увидеть основные time-killers первого алгоритма
 В связи с тем, что выбранный солвер работает зачастую довольно медленно, в худшем случае `BranchAndBound` проигрывает `ExhaustiveSearch`, что можно увидеть на наборе данных, который будет представлен следующим
 ### BnB - Naive
-|File name       |Method name           |Work time|Match|Counter|Solve Time|Get Float Time                 |
-|----------------|----------------------|---------|-----|-------|----------|-------------------------------|
-|knapsack_1      |ExhaustiveSearch      |0.0009944438934326172|True |1024   |NaN       |NaN                            |
-|knapsack_1      |BranchBound           |0.020967960357666016|True |2      |0.0011560916900634766|NaN                            |
-|knapsack_2      |BranchBound           |0.007566213607788086|True |24     |0.004033565521240234|6.651878356933594e-05          |
-|knapsack_2      |ExhaustiveSearch      |4.363059997558594e-05|True |32     |NaN       |NaN                            |
-|knapsack_3      |ExhaustiveSearch      |6.389617919921875e-05|True |64     |NaN       |NaN                            |
-|knapsack_3      |BranchBound           |0.006632089614868164|True |22     |0.003481864929199219|6.0558319091796875e-05         |
-|knapsack_4      |BranchBound           |0.005627155303955078|True |14     |0.002467632293701172|3.62396240234375e-05           |
-|knapsack_4      |ExhaustiveSearch      |0.00012111663818359375|True |128    |NaN       |NaN                            |
-|knapsack_5      |ExhaustiveSearch      |0.0003082752227783203|True |256    |NaN       |NaN                            |
-|knapsack_5      |BranchBound           |0.008033990859985352|True |22     |0.004161357879638672|6.961822509765625e-05          |
-|knapsack_6      |BranchBound           |0.03552460670471192|True |126    |0.02119922637939453|0.00042510032653808594         |
-|knapsack_6      |ExhaustiveSearch      |0.00012302398681640625|True |128    |NaN       |NaN                            |
-|knapsack_7      |ExhaustiveSearch      |0.060419797897338874|True |32768  |NaN       |NaN                            |
-|knapsack_7      |BranchBound           |0.10661792755126953|True |378    |0.06291556358337402|0.001249074935913086           |
+|File name       |Method name|Work time|Match|Counter|Solve Time|Get Float Time       |
+|----------------|-----------|---------|-----|-------|----------|---------------------|
+|knapsack_1      |ExhaustiveSearch|0.0011   |True |1024   |0.0       |0.0                  |
+|knapsack_1      |BranchBound|0.0221   |True |2      |0.0013    |0.0                  |
+|knapsack_2      |BranchBound|0.0094   |True |24     |0.0048    |0.0001               |
+|knapsack_2      |ExhaustiveSearch|0.0      |True |32     |0.0       |0.0                  |
+|knapsack_3      |ExhaustiveSearch|0.0001   |True |64     |0.0       |0.0                  |
+|knapsack_3      |BranchBound|0.0086   |True |22     |0.0041    |0.0001               |
+|knapsack_4      |BranchBound|0.0076   |True |14     |0.0032    |0.0001               |
+|knapsack_4      |ExhaustiveSearch|0.0001   |True |128    |0.0       |0.0                  |
+|knapsack_5      |ExhaustiveSearch|0.0003   |True |256    |0.0       |0.0                  |
+|knapsack_5      |BranchBound|0.0083   |True |22     |0.0042    |0.0001               |
+|knapsack_6      |BranchBound|0.0361   |True |126    |0.021     |0.0004               |
+|knapsack_6      |ExhaustiveSearch|0.0001   |True |128    |0.0       |0.0                  |
+|knapsack_7      |ExhaustiveSearch|0.0646   |True |32768  |0.0       |0.0                  |
+|knapsack_7      |BranchBound|0.1096   |True |378    |0.0633    |0.0013               |
+
 
 ## Results for *[Low-dimensional 0/1 knapsack problems](http://artemisa.unicauca.edu.co/~johnyortega/instances_01_KP/)*
 **Замечание:** Файл `f5_l-d_kp_15_375` был удален, т.к в нем присутствуют дробные значения
 ### f1_l-d_kp_10_269
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|ExhaustiveSearch|0.0013439655303955078 |295          |295        |269          |269     |[0 1 1 1 0 0 0 1 1 1]          |True |
-|GeneticSolver   |0.0561                |295          |295        |269          |269     |[0 1 1 1 0 0 0 1 1 1]          |True |
-|DynamicSolver   |0.0007                |295          |295        |269          |269     |[0 1 1 1 0 0 0 1 1 1]          |True |
-|GreedySearch    |1.4543533325195312e-05|294          |295        |260          |269     |[0 1 1 0 1 0 0 1 1 1]          |False|
-|BranchBound     |0.0075778961181640625 |295          |295        |269          |269     |[0 1 1 1 0 0 0 1 1 1]|True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|ExhaustiveSearch|0.0012   |295          |295        |269          |269     |[0 1 1 1 0 0 0 1 1 1]|True |
+|GeneticSolver   |0.066    |295          |295        |269          |269     |[0 1 1 1 0 0 0 1 1 1]|True |
+|DynamicSolver   |0.0006   |295          |295        |269          |269     |[0 1 1 1 0 0 0 1 1 1]|True |
+|GreedySearch    |0.0      |294          |295        |260          |269     |[0 1 1 0 1 0 0 1 1 1]|False|
+|BranchBound     |0.0078   |295          |295        |269          |269     |[0 1 1 1 0 0 0 1 1 1]|True |
+
 
 ### f2_l-d_kp_20_878
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|ExhaustiveSearch|1.4278116226196291    |1024         |1024       |871          |878     |[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1]|True |
-|GeneticSolver   |0.3826                |1024         |1024       |871          |878     |[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1]|True |
-|DynamicSolver   |0.0057                |1024         |1024       |871          |878     |[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1]|True |
-|GreedySearch    |2.551078796386719e-05 |1018         |1024       |837          |878     |[1 1 1 1 1 1 1 0 1 1 1 1 1 0 1 0 1 1 1 1]|False|
-|BranchBound     |0.006833314895629883  |1024         |1024       |871          |878     |[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1]|True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|ExhaustiveSearch|1.392    |1024         |1024       |871          |878     |[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1]|True |
+|GeneticSolver   |0.4305   |1024         |1024       |871          |878     |[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1]|True |
+|DynamicSolver   |0.0081   |1024         |1024       |871          |878     |[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1]|True |
+|GreedySearch    |0.0      |1018         |1024       |837          |878     |[1 1 1 1 1 1 1 0 1 1 1 1 1 0 1 0 1 1 1 1]|False|
+|BranchBound     |0.0066   |1024         |1024       |871          |878     |[1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1]|True |
 
 ### f3_l-d_kp_4_20
 
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|GreedySearch    |9.059906005859377e-06 |35           |35         |18           |20      |[1 1 0 1]                      |True |
-|BranchBound     |0.0025620460510253906 |35           |35         |18           |20      |[1 1 0 1]                  |True |
-|ExhaustiveSearch|1.9788742065429688e-05|35           |35         |18           |20      |[1 1 0 1]                      |True |
-|GeneticSolver   |0.0073                |35           |35         |18           |20      |[1 1 0 1]                      |True |
-|DynamicSolver   |0.0                   |35           |35         |18           |20      |[1 1 0 1]                      |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|GreedySearch    |0.0      |35           |35         |18           |20      |[1 1 0 1]            |True |
+|BranchBound     |0.0032   |35           |35         |18           |20      |[1 1 0 1]            |True |
+|ExhaustiveSearch|0.0      |35           |35         |18           |20      |[1 1 0 1]            |True |
+|GeneticSolver   |0.0097   |35           |35         |18           |20      |[1 1 0 1]            |True |
+|DynamicSolver   |0.0      |35           |35         |18           |20      |[1 1 0 1]            |True |
+
 
 ### f4_l-d_kp_4_11
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|DynamicSolver   |0.0                   |23           |23         |11           |11      |[0 1 0 1]                      |True |
-|BranchBound     |0.028420448303222656  |23           |23         |11           |11      |[0 1 0 1]                  |True |
-|GreedySearch    |1.5735626220703125e-05|16           |23         |6            |11      |[1 1 0 0]                      |False|
-|ExhaustiveSearch|2.193450927734375e-05 |23           |23         |11           |11      |[0 1 0 1]                      |True |
-|GeneticSolver   |0.0087                |23           |23         |11           |11      |[0 1 0 1]                      |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|DynamicSolver   |0.0      |23           |23         |11           |11      |[0 1 0 1]            |True |
+|BranchBound     |0.0292   |23           |23         |11           |11      |[0 1 0 1]            |True |
+|GreedySearch    |0.0      |16           |23         |6            |11      |[1 1 0 0]            |False|
+|ExhaustiveSearch|0.0      |23           |23         |11           |11      |[0 1 0 1]            |True |
+|GeneticSolver   |0.0101   |23           |23         |11           |11      |[0 1 0 1]            |True |
+
 
 ### f6_l-d_kp_10_60
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|BranchBound     |0.008014678955078125  |52           |52         |57           |60      |[0 0 1 0 1 1 1 1 1 1]|True |
-|GreedySearch    |1.4066696166992188e-05|52           |52         |57           |60      |[0 0 1 0 1 1 1 1 1 1]          |True |
-|ExhaustiveSearch|0.0009887218475341797 |52           |52         |57           |60      |[0 0 1 0 1 1 1 1 1 1]          |True |
-|GeneticSolver   |0.053                 |52           |52         |59           |60      |[0 0 1 1 1 0 0 1 1 1]          |True |
-|DynamicSolver   |0.0002                |52           |52         |60           |60      |[0 0 1 1 1 0 1 0 0 0]          |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|BranchBound     |0.0083   |52           |52         |57           |60      |[0 0 1 0 1 1 1 1 1 1]|True |
+|GreedySearch    |0.0      |52           |52         |57           |60      |[0 0 1 0 1 1 1 1 1 1]|True |
+|ExhaustiveSearch|0.0012   |52           |52         |57           |60      |[0 0 1 0 1 1 1 1 1 1]|True |
+|GeneticSolver   |0.0657   |52           |52         |58           |60      |[0 0 1 1 0 1 1 1 1 1]|True |
+|DynamicSolver   |0.0002   |52           |52         |60           |60      |[0 0 1 1 1 0 1 0 0 0]|True |
+
 
 ### f7_l-d_kp_7_50
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|ExhaustiveSearch|0.0001506805419921875 |107          |107        |50           |50      |[1 0 0 1 0 0 0]                |True |
-|BranchBound     |0.006130218505859375  |107          |107        |50           |50      |[1 0 0 1 0 0 0]         |True |
-|GreedySearch    |1.3828277587890625e-05|102          |107        |48           |50      |[1 1 0 0 1 1 0]                |False|
-|GeneticSolver   |0.0241                |107          |107        |50           |50      |[1 0 0 1 0 0 0]                |True |
-|DynamicSolver   |0.0001                |107          |107        |50           |50      |[1 0 0 1 0 0 0]                |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|ExhaustiveSearch|0.0001   |107          |107        |50           |50      |[1 0 0 1 0 0 0]      |True |
+|BranchBound     |0.0049   |107          |107        |50           |50      |[1 0 0 1 0 0 0]      |True |
+|GreedySearch    |0.0      |102          |107        |48           |50      |[1 1 0 0 1 1 0]      |False|
+|GeneticSolver   |0.0289   |107          |107        |50           |50      |[1 0 0 1 0 0 0]      |True |
+|DynamicSolver   |0.0001   |107          |107        |50           |50      |[1 0 0 1 0 0 0]      |True |
+
 
 ### f8_l-d_kp_23_10000
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|GreedySearch    |2.5272369384765625e-05|9751         |9767       |9750         |10000   |[1 1 1 1 1 1 1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 1 0]|False|
-|ExhaustiveSearch|11.809564352035522    |9767         |9767       |9768         |10000   |[1 1 1 1 1 1 1 1 0 0 1 0 0 0 0 1 1 0 0 0 0 0 0]|True |
-|GeneticSolver   |0.5925                |9760         |9767       |9761         |10000   |[1 1 1 1 1 0 1 1 0 0 0 0 1 1 0 1 1 0 0 0 0 0 0]|False|
-|DynamicSolver   |0.0703                |9767         |9767       |9768         |10000   |[1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0]|True |
-|BranchBound     |977.473798751831     |9767         |9767       |9768         |10000   |[1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0]|True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|GreedySearch    |0.0      |9751         |9767       |9750         |10000   |[1 1 1 1 1 1 1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 1 0]|False|
+|ExhaustiveSearch|11.3763  |9767         |9767       |9768         |10000   |[1 1 1 1 1 1 1 1 0 0 1 0 0 0 0 1 1 0 0 0 0 0 0]|True |
+|GeneticSolver   |0.6345   |9756         |9767       |9767         |10000   |[1 1 1 1 1 0 1 1 0 0 0 1 1 0 1 1 0 0 0 0 0 0 0]|False|
+|DynamicSolver   |0.0668   |9767         |9767       |9768         |10000   |[1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0]|True |
+|BranchBound     |1188.6169|9767         |9767       |9768         |10000   |[1 1 1 1 1 1 1 1 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0]|True |
+
 
 ### f9_l-d_kp_5_80
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|GreedySearch    |1.931190490722656e-05 |130          |130        |60           |80      |[1 1 1 1 0]                    |True |
-|DynamicSolver   |0.0001                |130          |130        |60           |80      |[1 1 1 1 0]                    |True |
-|GeneticSolver   |0.0109                |130          |130        |60           |80      |[1 1 1 1 0]                    |True |
-|ExhaustiveSearch|3.4809112548828125e-05|130          |130        |60           |80      |[1 1 1 1 0]                    |True |
-|BranchBound     |0.0016820430755615234 |130          |130        |60           |80      |[1 1 1 1 0]               |True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|GreedySearch    |0.0      |130          |130        |60           |80      |[1 1 1 1 0]          |True |
+|DynamicSolver   |0.0001   |130          |130        |60           |80      |[1 1 1 1 0]          |True |
+|GeneticSolver   |0.0148   |130          |130        |60           |80      |[1 1 1 1 0]          |True |
+|ExhaustiveSearch|0.0      |130          |130        |60           |80      |[1 1 1 1 0]          |True |
+|BranchBound     |0.0018   |130          |130        |60           |80      |[1 1 1 1 0]          |True |
+
 
 ### f10_l-d_kp_20_879.csv
-|Method name     |Work time             |Result Profit|Optim value|Result Weight|Capacity|Answer                         |Match|
-|----------------|----------------------|-------------|-----------|-------------|--------|-------------------------------|-----|
-|BranchBound     |0.007773399353027344  |1025         |1025       |871          |879     |[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1]|True |
-|GreedySearch    |2.47955322265625e-05  |1019         |1025       |837          |879     |[1 1 1 1 1 1 0 1 1 0 1 1 1 1 1 1 0 1 1 1]|False|
-|ExhaustiveSearch|1.4080164432525637    |1025         |1025       |871          |879     |[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1]|True |
-|GeneticSolver   |0.3839                |1025         |1025       |871          |879     |[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1]|True |
-|DynamicSolver   |0.0053                |1025         |1025       |871          |879     |[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1]|True |
+|Method name     |Work time|Result Profit|Optim value|Result Weight|Capacity|Answer               |Match|
+|----------------|---------|-------------|-----------|-------------|--------|---------------------|-----|
+|BranchBound     |0.0075   |1025         |1025       |871          |879     |[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1]|True |
+|GreedySearch    |0.0      |1019         |1025       |837          |879     |[1 1 1 1 1 1 0 1 1 0 1 1 1 1 1 1 0 1 1 1]|False|
+|ExhaustiveSearch|1.3606   |1025         |1025       |871          |879     |[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1]|True |
+|GeneticSolver   |0.4171   |1025         |1025       |871          |879     |[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1]|True |
+|DynamicSolver   |0.005    |1025         |1025       |871          |879     |[1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1]|True |
+
 
 ### BnB - Naive
 В данной таблице можно увидеть, что в худшем случае при использовании данного солвера `BnB` может сильно проиграть `Naive Search`.
 Данный случай выделен жирным
 
-|File name       |Method name           |Work time|Match|Counter|Solve Time|Get Float Time                 |
-|----------------|----------------------|---------|-----|-------|----------|-------------------------------|
-|f10_l-d_kp_20_879|BranchBound           |0.007773399353027344|True |22     |0.004014015197753906|6.365776062011719e-05          |
-|f10_l-d_kp_20_879|ExhaustiveSearch      |1.4080164432525637|True |1048576|NaN       |NaN                            |
-|f1_l-d_kp_10_269|ExhaustiveSearch      |0.0013439655303955078|True |1024   |NaN       |NaN                            |
-|f1_l-d_kp_10_269|BranchBound           |0.0075778961181640625|True |24     |0.004029512405395508|7.319450378417969e-05          |
-|f2_l-d_kp_20_878|ExhaustiveSearch      |1.4278116226196291|True |1048576|NaN       |NaN                            |
-|f2_l-d_kp_20_878|BranchBound           |0.006833314895629883|True |20     |0.0034322738647460933|5.5789947509765625e-05         |
-|f3_l-d_kp_4_20  |BranchBound           |0.0025620460510253906|True |6      |0.0010960102081298828|1.1920928955078125e-05         |
-|f3_l-d_kp_4_20  |ExhaustiveSearch      |1.9788742065429688e-05|True |16     |NaN       |NaN                            |
-|f4_l-d_kp_4_11  |BranchBound           |0.028420448303222656|True |14     |0.0036096572875976562|4.625320434570313e-05          |
-|f4_l-d_kp_4_11  |ExhaustiveSearch      |2.193450927734375e-05|True |16     |NaN       |NaN                            |
-|f6_l-d_kp_10_60 |BranchBound           |0.008014678955078125|True |26     |0.00437617301940918|7.43865966796875e-05           |
-|f6_l-d_kp_10_60 |ExhaustiveSearch      |0.0009887218475341797|True |1024   |NaN       |NaN                            |
-|f7_l-d_kp_7_50  |ExhaustiveSearch      |0.0001506805419921875|True |128    |NaN       |NaN                            |
-|f7_l-d_kp_7_50  |BranchBound           |0.006130218505859375|True |14     |0.002872467041015625|4.38690185546875e-05           |
-|**f8_l-d_kp_23_10000**|ExhaustiveSearch      |**11.809564352035522**|True |8388608|NaN       |NaN                            |
-|**f8_l-d_kp_23_10000**|BranchBound           |**977.473798751831**|True |4407676|702.7050042152405|13.483039855957033             |
-|f9_l-d_kp_5_80  |ExhaustiveSearch      |3.4809112548828125e-05|True |32     |NaN       |NaN                            |
-|f9_l-d_kp_5_80  |BranchBound           |0.0016820430755615234|True |2      |0.0005018711090087892|NaN                            |
+|File name       |Method name|Work time|Match|Counter|Solve Time|Get Float Time       |
+|----------------|-----------|---------|-----|-------|----------|---------------------|
+|f10_l-d_kp_20_879|BranchBound|0.0075   |True |22     |0.0039    |0.0001               |
+|f10_l-d_kp_20_879|ExhaustiveSearch|1.3606   |True |1048576|NaN       |NaN                  |
+|f1_l-d_kp_10_269|ExhaustiveSearch|0.0012   |True |1024   |NaN       |NaN                  |
+|f1_l-d_kp_10_269|BranchBound|0.0078   |True |24     |0.0042    |0.0001               |
+|f2_l-d_kp_20_878|ExhaustiveSearch|1.392    |True |1048576|NaN       |NaN                  |
+|f2_l-d_kp_20_878|BranchBound|0.0066   |True |20     |0.0033    |0.0001               |
+|f3_l-d_kp_4_20  |BranchBound|0.0032   |True |6      |0.0011    |NaN                  |
+|f3_l-d_kp_4_20  |ExhaustiveSearch|0.0      |True |16     |NaN       |NaN                  |
+|f4_l-d_kp_4_11  |BranchBound|0.0292   |True |14     |0.0048    |0.0001               |
+|f4_l-d_kp_4_11  |ExhaustiveSearch|0.0      |True |16     |NaN       |NaN                  |
+|f6_l-d_kp_10_60 |BranchBound|0.0083   |True |26     |0.0046    |0.0001               |
+|f6_l-d_kp_10_60 |ExhaustiveSearch|0.0012   |True |1024   |NaN       |NaN                  |
+|f7_l-d_kp_7_50  |ExhaustiveSearch|0.0001   |True |128    |NaN       |NaN                  |
+|f7_l-d_kp_7_50  |BranchBound|0.0049   |True |14     |0.0024    |NaN                  |
+|**f8_l-d_kp_23_10000**|ExhaustiveSearch|**11.3763**  |True |8388608|NaN       |NaN                  |
+|**f8_l-d_kp_23_10000**|BranchBound|**1188.6169**|True |4407676|708.755   |14.8591              |
+|f9_l-d_kp_5_80  |ExhaustiveSearch|0.0      |True |32     |NaN       |NaN                  |
+|f9_l-d_kp_5_80  |BranchBound|0.0018   |True |2      |0.0006    |NaN                  |
+
 
 ## Results for *[Large-scale 0/1 knapsack problems](http://artemisa.unicauca.edu.co/~johnyortega/instances_01_KP/)*
 **Замечание:** `ExhaustiveSearch` не использовался, поскольку ждать пару миллионов лет немного непозволительная роскошь.
-Кроме того, начиная с некоторого набора данных возникли проблемы с солвером `BnB`, который требует его купить (^_^) для решения настолько больших систем.
+Кроме того, начиная с некоторого набора данных возникли проблемы с солвером в `BnB`, который требует его купить (^_^) для решения настолько больших систем.
 Поэтому было принято решения использовать бенчмарк не полностью
+
 Результаты сгрупированны по числу предметов, доступных для выбора
+
 Кроме того, данная статистика не содержит поле `Answer`, т.к оно слишком большое и захламляет таблицу
 ### 100 Items
+|File name       |Method name|Work time|Result Profit|Optim value|Result Weight|Capacity             |Match|
+|----------------|-----------|---------|-------------|-----------|-------------|---------------------|-----|
+|knapPI_1_100_1000_1|DynamicSolver|0.0207   |9147         |9147       |985          |995                  |True |
+|knapPI_1_100_1000_1|GeneticSolver|0.6156   |23179        |9147       |23863        |995                  |False|
+|knapPI_1_100_1000_1|GreedySearch|0.0005   |8817         |9147       |908          |995                  |False|
+|knapPI_1_100_1000_1|BranchBound|0.2167   |9147         |9147       |985          |995                  |True |
+|knapPI_2_100_1000_1|GreedySearch|0.0001   |1487         |1514       |983          |995                  |False|
+|knapPI_2_100_1000_1|GeneticSolver|0.5858   |31253        |1514       |31038        |995                  |False|
+|knapPI_2_100_1000_1|DynamicSolver|0.0237   |1514         |1514       |991          |995                  |True |
+|knapPI_2_100_1000_1|BranchBound|0.8197   |1514         |1514       |991          |995                  |True |
+|knapPI_3_100_1000_1|GeneticSolver|0.5862   |35008        |2397       |29508        |997                  |False|
+|knapPI_3_100_1000_1|DynamicSolver|0.02     |2397         |2397       |997          |997                  |True |
+|knapPI_3_100_1000_1|BranchBound|0.3791   |2397         |2397       |997          |997                  |True |
+|knapPI_3_100_1000_1|GreedySearch|0.0001   |2375         |2397       |975          |997                  |False|
 
 ### 200 Items
+|File name       |Method name|Work time|Result Profit|Optim value|Result Weight|Capacity             |Match|
+|----------------|-----------|---------|-------------|-----------|-------------|---------------------|-----|
+|knapPI_1_200_1000_1|BranchBound|0.4333   |11238        |11238      |987          |1008                 |True |
+|knapPI_1_200_1000_1|GreedySearch|0.0001   |11227        |11238      |981          |1008                 |False|
+|knapPI_1_200_1000_1|GeneticSolver|1.9616   |51654        |11238      |48248        |1008                 |False|
+|knapPI_1_200_1000_1|DynamicSolver|0.0412   |11238        |11238      |987          |1008                 |True |
+|knapPI_2_200_1000_1|BranchBound|3.1694   |1634         |1634       |1006         |1008                 |True |
+|knapPI_2_200_1000_1|DynamicSolver|0.041|1634         |1634       |1006         |1008                 |True |
+|knapPI_2_200_1000_1|GeneticSolver|1.9783   |53040        |1634       |52306        |1008                 |False|
+|knapPI_2_200_1000_1|GreedySearch|0.0001   |1604         |1634       |1004         |1008                 |False|
+|knapPI_3_200_1000_1|GreedySearch|0.0001   |2649         |2697       |949          |997                  |False|
+|knapPI_3_200_1000_1|GeneticSolver|2.064    |68398        |2697       |57698        |997                  |False|
+|knapPI_3_200_1000_1|DynamicSolver|0.0426   |2697         |2697       |997          |997                  |True |
+|knapPI_3_200_1000_1|BranchBound|81.2847  |2697         |2697       |997          |997                  |True |
 
 ### 500 Items
+|File name       |Method name|Work time|Result Profit|Optim value|Result Weight|Capacity             |Match|
+|----------------|-----------|---------|-------------|-----------|-------------|---------------------|-----|
+|knapPI_1_500_1000_1|BranchBound|0.6063   |28857        |28857      |2543         |2543                 |True |
+|knapPI_1_500_1000_1|DynamicSolver|0.3468   |28857        |28857      |2543         |2543                 |True |
+|knapPI_1_500_1000_1|GeneticSolver|10.8148  |114822       |28857      |122609       |2543                 |False|
+|knapPI_1_500_1000_1|GreedySearch|0.0002   |28834        |28857      |2528         |2543                 |False|
+|knapPI_2_500_1000_1|BranchBound|2.5387   |4566         |4566       |2543         |2543                 |True |
+|knapPI_2_500_1000_1|DynamicSolver|0.3502   |4566         |4566       |2543         |2543                 |True |
+|knapPI_2_500_1000_1|GeneticSolver|10.8566  |127090       |4566       |126161       |2543                 |False|
+|knapPI_2_500_1000_1|GreedySearch|0.0002   |4552         |4566       |2538         |2543                 |False|
+|knapPI_3_500_1000_1|GeneticSolver|10.891|151631       |7117       |126631       |2517                 |False|
+|knapPI_3_500_1000_1|BranchBound|183.2984 |7117         |7117       |2517         |2517                 |True |
+|knapPI_3_500_1000_1|GreedySearch|0.0002   |7098         |7117       |2498         |2517                 |False|
+|knapPI_3_500_1000_1|DynamicSolver|0.3439   |7117         |7117       |2517         |2517                 |True |
 
 ### 1000 Items
+|File name       |Method name|Work time|Result Profit|Optim value|Result Weight|Capacity             |Match|
+|----------------|-----------|---------|-------------|-----------|-------------|---------------------|-----|
+|knapPI_1_1000_1000_1|BranchBound|7.1942   |54503        |54503      |5002         |5002                 |True |
+|knapPI_1_1000_1000_1|GreedySearch|0.0006   |54386        |54503      |4991         |5002                 |False|
+|knapPI_1_1000_1000_1|GeneticSolver|42.6974  |240740       |54503      |250902       |5002                 |False|
+|knapPI_1_1000_1000_1|DynamicSolver|1.5454   |54503        |54503      |5002         |5002                 |True |
+|knapPI_2_1000_1000_1|DynamicSolver|1.5515   |9052         |9052       |5002         |5002                 |True |
+|knapPI_2_1000_1000_1|GeneticSolver|42.7902  |241808       |9052       |243422       |5002                 |False|
+|knapPI_2_1000_1000_1|BranchBound|15.1673  |9052         |9052       |5002         |5002                 |True |
+|knapPI_2_1000_1000_1|GreedySearch|0.0005   |9046         |9052       |4994         |5002                 |False|
+|knapPI_3_1000_1000_1|BranchBound|18995.5164|14390        |14390      |4990         |4990                 |True |
+|knapPI_3_1000_1000_1|GreedySearch|0.0005   |14374        |14390      |4974         |4990                 |False|
+|knapPI_3_1000_1000_1|GeneticSolver|41.14    |327347       |14390      |274247       |4990                 |False|
+|knapPI_3_1000_1000_1|DynamicSolver|1.5119   |14390        |14390      |4990         |4990                 |True |
 
 ### 2000 Items
+|File name       |Method name|Work time|Result Profit|Optim value|Result Weight|Capacity             |Match|
+|----------------|-----------|---------|-------------|-----------|-------------|---------------------|-----|
+|knapPI_1_2000_1000_1|GreedySearch|0.0009   |110547       |110625     |9996         |10011                |False|
+|knapPI_1_2000_1000_1|GeneticSolver|166.0505 |481448       |110625     |492570       |10011                |False|
+|knapPI_1_2000_1000_1|DynamicSolver|6.5692   |110625       |110625     |10011        |10011                |True |
+|knapPI_2_2000_1000_1|GreedySearch|0.001    |18038        |18051      |10010        |10011                |False|
+|knapPI_2_2000_1000_1|GeneticSolver|160.7003 |509120       |18051      |506655       |10011                |False|
+|knapPI_2_2000_1000_1|DynamicSolver|6.4205   |18051        |18051      |10010        |10011                |True |
+|knapPI_3_2000_1000_1|GeneticSolver|159.7684 |572371       |28919      |476071       |9819                 |False|
+|knapPI_3_2000_1000_1|DynamicSolver|6.2337   |28919        |28919      |9819         |9819                 |True |
+|knapPI_3_2000_1000_1|GreedySearch|0.0009   |28827        |28919      |9727         |9819                 |False|
 
 ### 5000 Items
+|File name       |Method name|Work time|Result Profit|Optim value|Result Weight|Capacity             |Match|
+|----------------|-----------|---------|-------------|-----------|-------------|---------------------|-----|
+|knapPI_1_5000_1000_1|GreedySearch|0.0023   |276379       |276457     |25008        |25016                |False|
+|knapPI_1_5000_1000_1|GeneticSolver|979.636|1272968      |276457     |1280478      |25016                |False|
+|knapPI_1_5000_1000_1|DynamicSolver|40.5078  |276457       |276457     |25016        |25016                |True |
+|knapPI_2_5000_1000_1|DynamicSolver|42.0405  |44356        |44356      |25016        |25016                |True |
+|knapPI_2_5000_1000_1|GeneticSolver|1013.4526|1286230      |44356      |1283023      |25016                |False|
+|knapPI_2_5000_1000_1|GreedySearch|0.0026   |44351        |44356      |25016        |25016                |False|
+|knapPI_3_5000_1000_1|DynamicSolver|41.8174  |72505        |72505      |24805        |24805                |True |
+|knapPI_3_5000_1000_1|GeneticSolver|1013.3078|1535246      |72505      |1279646      |24805                |False|
+|knapPI_3_5000_1000_1|GreedySearch|0.0029   |72446        |72505      |24746        |24805                |False|
 
 ### 10000 Items
 
+|File name       |Method name|Work time|Result Profit|Optim value|Result Weight|Capacity             |Match|
+|----------------|-----------|---------|-------------|-----------|-------------|---------------------|-----|
+|knapPI_1_10000_1000_1|DynamicSolver|169.7613 |563647       |563647     |49877        |49877                |True |
+|knapPI_1_10000_1000_1|GreedySearch|0.0048   |563605       |563647     |49876        |49877                |False|
+|knapPI_1_10000_1000_1|GeneticSolver|3920.1727|2468082      |563647     |2505112      |49877                |False|
+|knapPI_2_10000_1000_1|DynamicSolver|164.3271 |90204        |90204      |49877        |49877                |True |
+|knapPI_2_10000_1000_1|GeneticSolver|3883.197 |2541409      |90204      |2533147      |49877                |False|
+|knapPI_2_10000_1000_1|GreedySearch|0.0049   |90200        |90204      |49877        |49877                |False|
+|knapPI_3_10000_1000_1|GeneticSolver|4025.2273|3046306      |146919     |2541806      |49519                |False|
+|knapPI_3_10000_1000_1|GreedySearch|0.0052   |146888       |146919     |49488        |49519                |False|
+|knapPI_3_10000_1000_1|DynamicSolver|167.7399 |146919       |146919     |49519        |49519                |True |
 
 ### BnB Timekillers
+Как видно из этой таблицы, в одном кейсе алгоритм работал более 5 часов. Из них 8000 секунд заняла работа солвера
+Как мы предполагаем, также в данном случае time-killer'ом может выступать постоянное добавление и удаление ограничений в
+системе, т.к там возможно использование питоновских структур данных, которые могут быть довольно медленными
+
+Однако, это время не замерялось 
+
+|File name       |Method name|Work time|Match|Counter|Solve Time|Get Float Time       |
+|----------------|-----------|---------|-----|-------|----------|---------------------|
+|knapPI_1_1000_1000_1|BranchBound|7.1942   |True |8652   |3.0255    |0.0308               |
+|knapPI_1_100_1000_1|BranchBound|0.2167   |True |710    |0.1215    |0.002                |
+|knapPI_1_200_1000_1|BranchBound|0.4333   |True |1186   |0.2276    |0.0034               |
+|knapPI_1_500_1000_1|BranchBound|0.6063   |True |1150   |0.2837    |0.0035               |
+|knapPI_2_1000_1000_1|BranchBound|15.1673  |True |18912  |6.2182    |0.0674               |
+|knapPI_2_100_1000_1|BranchBound|0.8197   |True |2722   |0.4683    |0.0077               |
+|knapPI_2_200_1000_1|BranchBound|3.1694   |True |8938   |1.7064    |0.0257               |
+|knapPI_2_500_1000_1|BranchBound|2.5387   |True |4842   |1.1885    |0.0148               |
+|knapPI_3_1000_1000_1|BranchBound|18995.5164|True |23504080|7944.3911 |82.7898              |
+|knapPI_3_100_1000_1|BranchBound|0.3791   |True |1228   |0.2125    |0.0034               |
+|knapPI_3_200_1000_1|BranchBound|81.2847  |True |219636 |43.1455   |0.6635               |
+|knapPI_3_500_1000_1|BranchBound|183.2984 |True |344166 |85.2296   |1.0873               |
+
 
 ## Team Members
 - *[Alexander Slavutin](https://github.com/AlexanderSlav)* 
