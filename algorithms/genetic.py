@@ -17,7 +17,7 @@ class GeneticSolver:
         self.num_generations = 20
 
     def set_initial_population(self):
-        chromosomes = 2 * len(self.profits)
+        chromosomes = len(self.profits)
         self.population_size = (chromosomes, len(self.profits))
         self.population = np.random.randint(2, size=self.population_size).astype(int)
 
