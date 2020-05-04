@@ -1,10 +1,7 @@
 import numpy as np
-import pandas as pd
 import random as rd
 from random import randint
-import matplotlib.pyplot as plt
 import random
-from more_itertools import locate
 from algorithms.base import Results
 from time import time
 import itertools
@@ -25,22 +22,35 @@ class GeneticSolver:
         self.population = np.random.randint(2, size=self.population_size).astype(int)
 
     def cal_fitness(self):
-        fitness = np.empty(self.population.shape[0])
-
-        for i in range(self.population.shape[0]):
-            sum_of_profits = np.sum(self.population[i] * self.profits)
-            sum_of_weights = np.sum(self.population[i] * self.weights)
-            while sum_of_weights > self.capacity:
-                indexes = np.where(self.population[i] == 1)[0]
-                indexes = np.random.choice(indexes, int(len(self.population[i]) * 0.3))
-                self.population[i][indexes] = 0
-                sum_of_profits = np.sum(self.population[i] * self.profits)
-                sum_of_weights = np.sum(self.population[i] * self.weights)
-            if sum_of_weights <= self.capacity:
-                fitness[i] = sum_of_profits
-            else:
-                fitness[i] = 0
-        return fitness.astype(int)
+        sum_of_profits = self.population.dot(self.profits)
+        sum_of_weights = self.population.dot(self.weights)
+        exceeded_populations = np.where(sum_of_weights > self.capacity)[0]
+        while len(exceeded_populations) > (0.3 * self.population.shape[0]):
+            new_populations = self.population[exceeded_populations].flatten()
+            indexes = np.where(new_populations == 1)[0]
+            indexes = np.random.choice(indexes, int(len(new_populations) * 0.3))
+            new_populations[indexes] = 0
+            new_populations = new_populations.reshape((-1, len(self.profits)))
+            self.population[exceeded_populations] = new_populations
+            sum_of_profits = self.population.dot(self.profits)
+            sum_of_weights = self.population.dot(self.weights)
+            exceeded_populations = np.where(sum_of_weights > self.capacity)[0]
+        sum_of_profits[exceeded_populations] = 0
+        return sum_of_profits.astype(int)
+        # for i in range(self.population.shape[0]):
+        #     sum_of_profits = np.sum(self.population[i] * self.profits)
+        #     sum_of_weights = np.sum(self.population[i] * self.weights)
+        #     while sum_of_weights > self.capacity:
+        #         indexes = np.where(self.population[i] == 1)[0]
+        #         indexes = np.random.choice(indexes, int(len(self.population[i]) * 0.3))
+        #         self.population[i][indexes] = 0
+        #         sum_of_profits = np.sum(self.population[i] * self.profits)
+        #         sum_of_weights = np.sum(self.population[i] * self.weights)
+        #     if sum_of_weights <= self.capacity:
+        #         fitness[i] = sum_of_profits
+        #     else:
+        #         fitness[i] = 0
+        # return fitness.astype(int)
 
     def selection(self, fitness, num_parents, selection_type='max'):
         fitness = list(fitness)
