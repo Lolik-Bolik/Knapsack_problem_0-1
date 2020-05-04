@@ -4,6 +4,7 @@ import random as rd
 from random import randint
 import matplotlib.pyplot as plt
 import random
+from more_itertools import locate
 from algorithms.base import Results
 from time import time
 import itertools
@@ -19,7 +20,7 @@ class GeneticSolver:
         self.num_generations = 20
 
     def set_initial_population(self):
-        chromosomes = pow(len(self.profits), 2)
+        chromosomes = len(self.profits)
         self.population_size = (chromosomes, len(self.profits))
         self.population = np.random.randint(2, size=self.population_size).astype(int)
 
@@ -29,6 +30,12 @@ class GeneticSolver:
         for i in range(self.population.shape[0]):
             sum_of_profits = np.sum(self.population[i] * self.profits)
             sum_of_weights = np.sum(self.population[i] * self.weights)
+            while sum_of_weights > self.capacity:
+                indexes = np.where(self.population[i] == 1)[0]
+                indexes = np.random.choice(indexes, int(len(self.population[i]) * 0.3))
+                self.population[i][indexes] = 0
+                sum_of_profits = np.sum(self.population[i] * self.profits)
+                sum_of_weights = np.sum(self.population[i] * self.weights)
             if sum_of_weights <= self.capacity:
                 fitness[i] = sum_of_profits
             else:
@@ -86,6 +93,7 @@ class GeneticSolver:
             else:
                 mutants[i, int_random_value] = 0
         return mutants
+
 
     def solve(self):
         result = Results()
