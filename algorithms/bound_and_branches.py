@@ -42,13 +42,13 @@ class BranchBound:
             lock_variable = self.get_float_values(is_float)[0]
             self.recursive_solve(solver, lock_variable, 'left')
             self.recursive_solve(solver, lock_variable, 'right')
-        result.answers = self.optimal_solution
-        result.time = time() - result.time
+        result.answers = list(map(int, self.optimal_solution))
+        result.time = np.round(time() - result.time, 4)
         result.weight = sum(itertools.compress(self.weights, self.optimal_solution))
         result.profit = sum(itertools.compress(self.profits, self.optimal_solution))
         result.counter = self.counter
-        result.solve_time = self.solve_time
-        result.get_float_time = self.get_float_time
+        result.solve_time = np.round(self.solve_time, 4)
+        result.get_float_time = np.round(self.get_float_time, 4)
 
         return result
 

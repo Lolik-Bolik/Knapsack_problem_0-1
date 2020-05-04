@@ -1,6 +1,7 @@
 from algorithms.base import Results
 from time import time
 import itertools
+import numpy as np
 
 
 class ExhaustiveSearch:
@@ -25,7 +26,7 @@ class ExhaustiveSearch:
                 result.answers = list(node)
                 result.profit = profit
                 result.weight = weight
-        result.time = time() - result.time
+        result.time = np.round(time() - result.time, 4)
         return result
 
 

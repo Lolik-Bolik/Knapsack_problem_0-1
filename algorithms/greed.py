@@ -1,5 +1,6 @@
 from algorithms.base import Results
 from time import time
+import numpy as np
 
 
 class GreedySearch:
@@ -22,7 +23,7 @@ class GreedySearch:
                 result.answers[item[0]] = 1
                 result.weight += self.weights[item[0]]
                 result.profit += self.profits[item[0]]
-        result.time = time() - result.time
+        result.time = np.round(time() - result.time, 4)
         return result
 
 
