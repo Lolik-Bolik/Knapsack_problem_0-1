@@ -70,9 +70,6 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--path', type=str,
                         default='./data/low-dimensional.json',
                         help='path to benchmarks files')
-    parser.add_argument('-exp_n', '--experiment_number', type=int,
-                        default=5,
-                        help='number of experiments')
     parser.add_argument('-make_csv', type=bool,
                         default=True)
     args = parser.parse_args()
